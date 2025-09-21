@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Enums\UserRoleEnum;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Seed managers and users
+        User::create([
+            'name' => 'Manager One',
+            'email' => 'manager@softxpert.com',
+            'password' => Hash::make('password'),
+            'role' => UserRoleEnum::manager->value,
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        User::create([
+            'name' => 'User One',
+            'email' => 'user@softxpert.com',
+            'password' => Hash::make('password'),
+            'role' => UserRoleEnum::user->value,
         ]);
     }
 }
