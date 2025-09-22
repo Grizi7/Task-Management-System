@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'manager@softxpert.com',
             'password' => Hash::make('password'),
             'role' => UserRoleEnum::manager->value,
+            'email_verified_at' => now(),
         ]);
 
         User::create([
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@softxpert.com',
             'password' => Hash::make('password'),
             'role' => UserRoleEnum::user->value,
+            'email_verified_at' => now(),
         ]);
     }
 }
